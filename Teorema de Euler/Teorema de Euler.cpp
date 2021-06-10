@@ -3,13 +3,12 @@
 #include <NTL/ZZ.h>
 using namespace NTL;
 
-ZZ mimodulo(ZZ x, ZZ y)
+ZZ moduloZZ(ZZ a, ZZ b)
 {
-    ZZ div = x / y;
-    ZZ modulo = -(div * y) + x;
-    if (modulo < 0)
-        modulo += y;
-    return modulo;
+    ZZ r;
+    r = a - b * (a / b);
+    r = r + (r < 0) * b;
+    return r;
 }
 
 int Contador_Bucles=0;
@@ -20,7 +19,7 @@ ZZ mcd(ZZ x, ZZ y)
     while (y != 0)
     {
         Contador_Bucles++;
-        modulo = mimodulo(x, y);
+        modulo = moduloZZ(x, y);
         x = y;
         y = modulo;
     }
@@ -59,7 +58,7 @@ ZZ euler(ZZ x, ZZ y){
     ZZ res;
     ZZ prime=ZZ(phi(y));
     if(mcd(x,y)!=1){std::cout<<"\n El mcd de los numeros ingresados no es 1"; return ZZ(0);}
-    else{res=mimodulo(potencia(x,prime),y);}
+    else{res=moduloZZ(potencia(x,prime),y);}
     //COUT DE RESPUESTA
     //std::cout<<"Res: "<<x<<" ^ "<<prime<<" (mod "<<y<<") = "<<res;
     return res;
