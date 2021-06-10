@@ -1,0 +1,73 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <time.h>
+#include <NTL/ZZ.h>
+#include <cstring>
+#include <sstream>
+using namespace std;
+using namespace NTL;
+
+ZZ modulo(ZZ a, ZZ b)
+{
+    ZZ r;
+    r = a - b * (a / b);
+    r = r + (r < 0) * b;
+    return r;
+}
+
+
+
+ZZ naive (ZZ base, ZZ exponente, ZZ modulo1)
+{
+    ZZ i;
+    ZZ contador;
+    contador=1;
+    i=1;
+    ZZ identity;
+    identity=1;
+
+    ZZ n;
+    n=exponente;
+
+    ZZ c;
+    c=base;
+    if(n==0)
+    {
+        cout<<"numero de vueltas: "<<contador<<endl;
+        return identity;
+    }
+    if(n==1)
+    {
+        cout<<"numero de vueltas: "<<contador<<endl;
+        return base;
+    }
+
+    while(i!=exponente)
+    {
+        c=c*c;
+        contador++;
+        if(c>modulo1)
+        {
+            c=modulo(c,modulo1);
+        }
+        i++;
+    }
+    cout<<"numero de vueltas: "<<contador<<endl;
+    return c;
+
+}
+
+
+int main()
+{
+    ZZ base;
+    ZZ exponente;
+    ZZ modulo2;
+    base=12;
+    exponente=2;
+    modulo2=10;
+
+    cout<<naive(base, exponente, modulo2);
+}
