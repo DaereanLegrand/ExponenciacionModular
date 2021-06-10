@@ -22,8 +22,8 @@ ZZ potenciacionbinariamodular(ZZ x, long long y, ZZ m) {
         y >>= 1;
     }
     //COUT DEL BUCLE Y LA RESPUESTA AQUI '-'
-    std::cout<<"\n Cantidad de bucles: "<<Contador_bucles;
-    std::cout<<"\n respuesta: "<<respuesta;
+    //std::cout<<"\n Cantidad de bucles: "<<Contador_bucles;
+    //std::cout<<"\n respuesta: "<<respuesta;
     return respuesta;
 }
 
