@@ -16,7 +16,7 @@ ZZ potenciacionbinariamodular(ZZ x, long long y, ZZ m) {
     x = moduloZZ(x, m);
     while (y > 0) {
         Contador_bucles++;
-        if (y&1) { respuesta = mimodulo(respuesta * x,m); }
+        if (y&1) { respuesta = moduloZZ(respuesta * x,m); }
         x = moduloZZ(x * x,m);
         y >>= 1;
     }
