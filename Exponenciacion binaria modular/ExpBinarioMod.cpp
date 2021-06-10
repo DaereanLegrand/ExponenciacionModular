@@ -2,23 +2,22 @@
 #include <NTL/ZZ.h>
 using namespace NTL;
 
-ZZ mimodulo(ZZ x, ZZ y)
+ZZ moduloZZ(ZZ a, ZZ b)
 {
-    ZZ div = x / y;
-    ZZ modulo = -(div * y) + x;
-    if (modulo < 0)
-        modulo += y;
-    return modulo;
+    ZZ r;
+    r = a - b * (a / b);
+    r = r + (r < 0) * b;
+    return r;
 }
 
 ZZ potenciacionbinariamodular(ZZ x, long long y, ZZ m) {
     ZZ respuesta; respuesta = 1;
     int Contador_bucles=0;
-    x = mimodulo(x, m);
+    x = moduloZZ(x, m);
     while (y > 0) {
         Contador_bucles++;
         if (y&1) { respuesta = mimodulo(respuesta * x,m); }
-        x = mimodulo(x * x,m);
+        x = moduloZZ(x * x,m);
         y >>= 1;
     }
     //COUT DEL BUCLE Y LA RESPUESTA AQUI '-'
