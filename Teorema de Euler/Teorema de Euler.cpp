@@ -60,7 +60,8 @@ ZZ euler(ZZ x, ZZ y){
     ZZ prime=ZZ(phi(y));
     if(mcd(x,y)!=1){std::cout<<"\n El mcd de los numeros ingresados no es 1"; return ZZ(0);}
     else{res=mimodulo(potencia(x,prime),y);}
-    std::cout<<"Res: "<<x<<" ^ "<<prime<<" (mod "<<y<<") = "<<res;
+    //COUT DE RESPUESTA
+    //std::cout<<"Res: "<<x<<" ^ "<<prime<<" (mod "<<y<<") = "<<res;
     return res;
 }
 
@@ -70,6 +71,7 @@ int main()
     a=RandomPrime_ZZ(16); b=RandomPrime_ZZ(16);
     a=13;b=12;
     euler(a,b);
-    std::cout<<"\n Bucles: "<<Contador_Bucles;
+    //COUT DE BUCLES
+    //std::cout<<"\n Bucles: "<<Contador_Bucles;
 
 }
