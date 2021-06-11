@@ -21,10 +21,11 @@ ZZ modulo(ZZ a, ZZ b)
 
 ZZ naive (ZZ base, ZZ exponente, ZZ modulo1)
 {
+    cout<<exponente<<endl;
     ZZ i;
     ZZ contador;
-    contador=1;
-    i=1;
+    contador=conv<ZZ>("1");
+    i=conv<ZZ>("1");
     ZZ identity;
     identity=1;
 
@@ -46,12 +47,8 @@ ZZ naive (ZZ base, ZZ exponente, ZZ modulo1)
 
     while(i!=exponente)
     {
-        c=c*c;
+        c=modulo(c*c,modulo1);
         contador++;
-        if(c>modulo1)
-        {
-            c=modulo(c,modulo1);
-        }
         i++;
     }
     cout<<"numero de vueltas: "<<contador<<endl;
@@ -65,9 +62,10 @@ int main()
     ZZ base;
     ZZ exponente;
     ZZ modulo2;
-    base=12;
-    exponente=2;
-    modulo2=10;
+    base=conv<ZZ>("65521");
+    exponente=conv<ZZ>("61729");
+    modulo2=conv<ZZ>("655215");
 
     cout<<naive(base, exponente, modulo2);
 }
+
